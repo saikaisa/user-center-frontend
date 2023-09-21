@@ -16,8 +16,16 @@ export default [
     name: '管理页',
     icon: 'crown',
     access: 'canAdmin',
+    /** 下面是嵌套，表示 Admin 组件里可以再嵌套 routes 中的组件，
+     * 在 Admin.tsx 中引入 children 可以将 routes 中的组件当作子页面显示 */
+    component: './Admin',
     routes: [
-      { path: '/admin/sub-page', name: '二级管理页', icon: 'smile', component: './Welcome' },
+      {
+        path: '/admin/user-manage',
+        name: '用户管理',
+        icon: 'smile',
+        component: './Admin/UserManage',
+      },
       { component: './404' },
     ],
   },
