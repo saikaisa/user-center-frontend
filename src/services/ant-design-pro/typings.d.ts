@@ -29,6 +29,8 @@ declare namespace API {
     currentAuthority?: string;
   };
 
+  type RegisterResult = number;
+
   type PageParams = {
     current?: number;
     pageSize?: number;
@@ -65,6 +67,15 @@ declare namespace API {
     userAccount?: string;
     userPassword?: string;
     autoLogin?: boolean;
+    type?: string;
+  };
+
+  /** 这是 ts 语法的属性限制，RegisterParams 相当于类型，里面的四个参数就是其属性。
+   * 例如调用 RegisterParams.aaa 就会报错，因为 aaa 不是其中属性 */
+  type RegisterParams = {
+    userAccount?: string;
+    userPassword?: string;
+    checkPassword?: string;
     type?: string;
   };
 

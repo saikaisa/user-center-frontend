@@ -17,9 +17,9 @@ export const initialStateConfig = {
   loading: <PageLoading />,
 };
 
-/** 这里设置一个全局请求地址前缀 */
+/** 这里设置一个全局请求超时时长 */
 export const request: RequestConfig = {
-  timeout: 10000,
+  timeout: 1000000,
 };
 
 /**
@@ -31,12 +31,14 @@ export async function getInitialState(): Promise<{
   loading?: boolean;
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
+  // 获取用户信息
   const fetchUserInfo = async () => {
     try {
       const msg = await queryCurrentUser();
       return msg.data;
     } catch (error) {
-      history.push(loginPath);
+      // 如果没有获取到用户信息，则重定向至 login 页面
+      // history.push(loginPath);
     }
     return undefined;
   };
@@ -66,8 +68,13 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     footerRender: () => <Footer />,
     onPageChange: () => {
       const { location } = history;
-      // 如果没有登录，重定向到 login
-      if (!initialState?.currentUser && location.pathname !== loginPath) {
+      // 如果访问白名单的登录或注册页面，则不执行之后的操作
+      const whiteList = ['/user/register', loginPath];
+      if (whiteList.includes(location.pathname)) {
+        return;
+      }
+      // 如果用户试图访问白名单之外的页面，则判断用户是否登录，如果未登录则重定向到 login
+      if (!initialState?.currentUser) {
         history.push(loginPath);
       }
     },
