@@ -20,7 +20,7 @@ const loginOut = async () => {
   await outLogin();
   const { query = {}, search, pathname } = history.location;
   const { redirect } = query;
-  // Note: There may be security issues, please note
+  // 注销后如果 当前页面不是登录页面 或者 没有需要重定向的页面，则返回到登录页面
   if (window.location.pathname !== '/user/login' && !redirect) {
     history.replace({
       pathname: '/user/login',
@@ -38,6 +38,9 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
     (event: MenuInfo) => {
       const { key } = event;
       if (key === 'logout') {
+        /** 这里的 ...s 是一个对象扩展符，如果传进来的对象不只有 currentUser 时，其他的对象就被塞在这个 ...s 里展开
+         * 如果没有这个 ...s ，那么传进来的所有除了 currentUser 的其他对象都会被一同设为 undefined
+         */
         setInitialState((s) => ({ ...s, currentUser: undefined }));
         loginOut();
         return;

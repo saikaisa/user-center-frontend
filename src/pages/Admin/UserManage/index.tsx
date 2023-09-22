@@ -65,6 +65,10 @@ const columns: ProColumns<API.CurrentUser>[] = [
     copyable: true,
   },
   {
+    title: '邀请码',
+    dataIndex: 'invitationCode',
+  },
+  {
     title: '状态',
     dataIndex: 'userStatus',
     valueEnum: {

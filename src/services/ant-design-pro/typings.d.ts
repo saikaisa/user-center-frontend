@@ -10,6 +10,7 @@ declare namespace API {
     gender: number;
     phone: string;
     email: string;
+    invitationCode: string;
     userStatus: number;
     userRole: number;
     createTime: Date;
@@ -26,6 +27,16 @@ declare namespace API {
   type PageParams = {
     current?: number;
     pageSize?: number;
+  };
+
+  /**
+   * 通用返回类型
+   */
+  type BaseResponse<T> = {
+    code: number;
+    data: T;
+    message: string;
+    description: string;
   };
 
   type RuleListItem = {
@@ -68,6 +79,7 @@ declare namespace API {
     userAccount?: string;
     userPassword?: string;
     checkPassword?: string;
+    invitationCode?: string;
     type?: string;
   };
 

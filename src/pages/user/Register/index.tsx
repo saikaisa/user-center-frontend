@@ -31,7 +31,8 @@ const Register: React.FC = () => {
        */
       // 这里返回参数可以从后端 Service 类的 userRegister 方法中看到，返回的是新用户 id
       const id = await register(values);
-      if (id > 0) {
+
+      if (id) {
         const defaultLoginSuccessMessage = '注册成功！';
         message.success(defaultLoginSuccessMessage);
         /** 此方法会跳转到 history.location 参数所在的位置
@@ -46,11 +47,8 @@ const Register: React.FC = () => {
           query,
         });
         return;
-      } else {
-        // id <= 0 时抛出异常，然后被下面的 catch 捕获到
-        throw new Error(`register error id = ${id}`);
       }
-    } catch (error) {
+    } catch (error: any) {
       const defaultLoginFailureMessage = '注册失败，请重试！';
       message.error(defaultLoginFailureMessage);
     }
@@ -138,6 +136,20 @@ const Register: React.FC = () => {
                     min: 8,
                     type: 'string',
                     message: '长度不能小于 8',
+                  },
+                ]}
+              />
+              <ProFormText
+                name="invitationCode"
+                fieldProps={{
+                  size: 'large',
+                  prefix: <UserOutlined className={styles.prefixIcon} />,
+                }}
+                placeholder={'邀请码（必填）'}
+                rules={[
+                  {
+                    required: true,
+                    message: '邀请码是必填项！',
                   },
                 ]}
               />
