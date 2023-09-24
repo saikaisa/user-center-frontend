@@ -8,6 +8,7 @@ import { history, Link } from 'umi';
 import defaultSettings from '../config/defaultSettings';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import type { RequestConfig } from '@@/plugin-request/request';
+import * as process from 'process';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
