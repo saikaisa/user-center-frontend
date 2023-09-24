@@ -8,7 +8,7 @@ import { stringify } from 'querystring';
  */
 const request = extend({
   credentials: 'include', // 默认请求是否带上cookie
-  prefix: process.env.NODE_ENV === 'production' ? 'http://user-backend.saikaisa.top' : undefined,
+  prefix: process.env.NODE_ENV === 'production' ? 'http://8.130.101.248' : undefined,
   // requestType: 'form',
 });
 
