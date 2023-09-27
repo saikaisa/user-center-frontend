@@ -13,7 +13,7 @@ const request = extend({
 });
 
 /**
- * 所以请求拦截器
+ * 所有请求拦截器
  */
 request.interceptors.request.use((url, options): any => {
   console.log(`do request url = ${url}`);
@@ -31,9 +31,12 @@ request.interceptors.request.use((url, options): any => {
  */
 request.interceptors.response.use(async (response, options): Promise<any> => {
   const res = await response.clone().json();
+  // res.code 是和后端约定的状态码，表示响应状态
+  // 0 表示成功
   if (res.code === 0) {
     return res.data;
   }
+  // 40100 表示未登录
   if (res.code === 40100) {
     message.error('请先登录');
     history.replace({

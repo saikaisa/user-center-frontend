@@ -14,7 +14,7 @@ const Welcome: React.FC = () => {
     <PageContainer>
       <Card>
         <Alert
-          message={'更快更强的重型组件，已经发布。'}
+          message={'成功登录用户管理中心！'}
           type="success"
           showIcon
           banner
@@ -24,15 +24,11 @@ const Welcome: React.FC = () => {
           }}
         />
         <Typography.Text strong>
-          <a
-            href="https://procomponents.ant.design/components/table"
-            rel="noopener noreferrer"
-            target="__blank"
-          >
-            欢迎使用
+          欢迎使用，
+          <a href="https://saikaisa.top/notes/588/" rel="noopener noreferrer" target="__blank">
+            点击查看项目文档
           </a>
         </Typography.Text>
-        <CodePreview>yarn add @ant-design/pro-components</CodePreview>
       </Card>
     </PageContainer>
   );

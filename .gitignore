@@ -8,6 +8,7 @@ _roadhog-api-doc
 .umi
 
 # production
+/mock
 /dist
 
 # misc

@@ -69,7 +69,7 @@ const Login: React.FC = () => {
           title="用户管理中心"
           subTitle={
             <a href={SAIKAI_SITE} target="_blank" rel="noreferrer">
-              ovO 组的用户中心是本次课设最具影响力的 Web 设计样例
+              ovO 组的用户中心
             </a>
           }
           initialValues={{
