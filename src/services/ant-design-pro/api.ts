@@ -50,6 +50,17 @@ export async function searchUsers(options?: { [key: string]: any }) {
   });
 }
 
+/** 删除用户 POST /api/user/delete */
+export async function deleteUsers(deleteId: number, options?: { [key: string]: any }) {
+  return request<API.BaseResponse<API.DeleteResult>>('/api/user/delete', {
+    method: 'POST',
+    params: {
+      DeleteId: deleteId,
+    },
+    ...(options || {}),
+  });
+}
+
 /** 此处后端没有提供注释 GET /api/notices */
 export async function getNotices(options?: { [key: string]: any }) {
   return request<API.NoticeIconList>('/api/notices', {

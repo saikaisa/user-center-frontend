@@ -24,6 +24,8 @@ declare namespace API {
 
   type RegisterResult = number;
 
+  type DeleteResult = boolean;
+
   type PageParams = {
     current?: number;
     pageSize?: number;
